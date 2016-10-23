@@ -1,10 +1,27 @@
 package multiples3and5;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import multiples3and5.exceptions.NegativeNumberException;
 
-@Getter
-@AllArgsConstructor
 public class Number {
-    public int value;
+    private int value;
+
+    public Number(int value) throws NegativeNumberException {
+        this.setValue(value);
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) throws NegativeNumberException {
+        verifyNegativeValue(value);
+
+        this.value = value;
+    }
+
+    private void verifyNegativeValue(int value) throws NegativeNumberException {
+        if (value < 0) {
+            throw new NegativeNumberException();
+        }
+    }
 }
