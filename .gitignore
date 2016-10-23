@@ -1,2 +1,8 @@
+## Ignore idea configuration files
 .idea*
+
+## Ignore Mac OS X configuration files
 *.DS_Store
+
+## Ignore compiled classes
+out/*
