@@ -9,6 +9,13 @@ public class Number {
         this.setValue(value);
     }
 
+    public boolean isMultipleOf(int value) {
+        if (this.value % value == 0) {
+            return true;
+        }
+        return false;
+    }
+
     public int getValue() {
         return value;
     }
