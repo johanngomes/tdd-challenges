@@ -3,6 +3,8 @@ package multiples3and5;
 import multiples3and5.exceptions.NegativeNumberException;
 
 public class Number {
+    private int ZERO = 0;
+
     private int value;
 
     public Number(int value) throws NegativeNumberException {
@@ -10,7 +12,7 @@ public class Number {
     }
 
     public boolean isMultipleOf(int value) {
-        if (this.value % value == 0) {
+        if (this.value % value == ZERO) {
             return true;
         }
         return false;
@@ -27,7 +29,7 @@ public class Number {
     }
 
     private void verifyNegativeValue(int value) throws NegativeNumberException {
-        if (value < 0) {
+        if (value < ZERO) {
             throw new NegativeNumberException();
         }
     }

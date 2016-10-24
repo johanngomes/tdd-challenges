@@ -14,4 +14,10 @@ public class SumTest {
         assertThat(sum.multiplesOf3Behind1000(), is(166833));
     }
 
+    @Test
+    public void shouldSumMultiplesOf5Behind1000() throws NegativeNumberException {
+        Sum sum = new Sum();
+        assertThat(sum.multiplesOf5Behind1000(), is(99500));
+    }
+
 }
