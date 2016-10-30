@@ -39,12 +39,17 @@ public class Fibonacci {
             Number numberToBeAdded = new Number(sequence.getSequence().get(n - 1).getValue()
                                               + sequence.getSequence().get(n).getValue());
 
-            if(numberToBeAdded.getValue() > limitByNumber) {
-                break;
-            }
+            if (checkValidNumberValueLimit(numberToBeAdded)) break;
 
             sequence.addNumber(numberToBeAdded);
         }
+    }
+
+    private boolean checkValidNumberValueLimit(Number numberToBeAdded) {
+        if(numberToBeAdded.getValue() > limitByNumber) {
+            return true;
+        }
+        return false;
     }
 
     private void addTwoFirstFibonacciNumbersToSequence() {
