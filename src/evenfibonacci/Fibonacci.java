@@ -3,12 +3,15 @@ package evenfibonacci;
 import evenfibonacci.exceptions.FibonacciSequenceLimitLessThanTwo;
 
 public class Fibonacci {
-    private Sequence sequence;
-    private int limitBy;
+    private final int limitByNumber;
+    private final int limitByLength;
 
-    public Fibonacci(int limitBy) {
+    private Sequence sequence;
+
+    public Fibonacci(int limitByNumber, int limitByLength) {
         this.sequence = new Sequence();
-        this.limitBy = limitBy;
+        this.limitByNumber = limitByNumber;
+        this.limitByLength = limitByLength;
     }
 
     public Sequence getLimitedSequence() throws FibonacciSequenceLimitLessThanTwo {
@@ -18,23 +21,29 @@ public class Fibonacci {
     }
 
     private void builtSequence() throws FibonacciSequenceLimitLessThanTwo {
-        checkValidLimit();
+        checkValidLimitLength();
 
         addTwoFirstFibonacciNumbersToSequence();
 
         addNextFibonacciNumbersToSequence();
     }
 
-    private void checkValidLimit() throws FibonacciSequenceLimitLessThanTwo {
-        if(limitBy < 2) {
+    private void checkValidLimitLength() throws FibonacciSequenceLimitLessThanTwo {
+        if(limitByLength < 2) {
             throw new FibonacciSequenceLimitLessThanTwo();
         }
     }
 
     private void addNextFibonacciNumbersToSequence() {
-        for(int n=1; n < limitBy; n++) {
-            sequence.addNumber(new Number(sequence.getSequence().get(n - 1).getValue()
-                                        + sequence.getSequence().get(n).getValue()));
+        for(int n = 1; n < limitByLength; n++) {
+            Number numberToBeAdded = new Number(sequence.getSequence().get(n - 1).getValue()
+                                              + sequence.getSequence().get(n).getValue());
+
+            if(numberToBeAdded.getValue() > limitByNumber) {
+                break;
+            }
+
+            sequence.addNumber(numberToBeAdded);
         }
     }
 

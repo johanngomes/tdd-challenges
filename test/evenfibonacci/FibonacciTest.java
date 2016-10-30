@@ -8,9 +8,11 @@ import static org.junit.Assert.assertThat;
 
 public class FibonacciTest {
 
+    private final int FOUR_MILLION = 4000000;
+
     @Test
     public void shouldBuildSequenceOf5Numbers() throws FibonacciSequenceLimitLessThanTwo {
-        Fibonacci fibonacci = new Fibonacci(5);
+        Fibonacci fibonacci = new Fibonacci(FOUR_MILLION, 5);
 
         Sequence fibonacciSequenceOf5Numbers = fibonacci.getLimitedSequence();
 
@@ -23,7 +25,7 @@ public class FibonacciTest {
 
     @Test
     public void shouldBuildSequenceOf2Numbers() throws FibonacciSequenceLimitLessThanTwo {
-        Fibonacci fibonacci = new Fibonacci(5);
+        Fibonacci fibonacci = new Fibonacci(FOUR_MILLION, 5);
 
         Sequence fibonacciSequenceOf5Numbers = fibonacci.getLimitedSequence();
 
@@ -33,9 +35,18 @@ public class FibonacciTest {
 
     @Test(expected = FibonacciSequenceLimitLessThanTwo.class)
     public void shouldNotBuildSequenceOf1Number() throws FibonacciSequenceLimitLessThanTwo {
-        Fibonacci fibonacci = new Fibonacci(1);
+        Fibonacci fibonacci = new Fibonacci(FOUR_MILLION, 1);
 
         fibonacci.getLimitedSequence();
+    }
+
+    @Test
+    public void shouldBuildASequenceLimitedByNumbersLessThan4Million() throws FibonacciSequenceLimitLessThanTwo {
+        Fibonacci fibonacci = new Fibonacci(FOUR_MILLION, 1000000);
+
+        Sequence sequence = fibonacci.getLimitedSequence();
+
+        assertThat(sequence.getSequence().get(31).getValue(), is(3524578));
     }
 
 }
