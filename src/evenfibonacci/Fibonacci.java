@@ -5,27 +5,31 @@ public class Fibonacci {
     private int limitBy;
 
     public Fibonacci(int limitBy) {
+        this.sequence = new Sequence();
         this.limitBy = limitBy;
     }
 
     public Sequence getLimitedSequenceOf5Numbers() {
-        int one=1;
-        int two=2;
-
-        sequence = new Sequence();
-
-        sequence.addNumber(new Number(one));
-        sequence.addNumber(new Number(two));
-
-        sequence.addNumber(new Number(sequence.getSequence().get(0).getValue()
-                                    + sequence.getSequence().get(1).getValue()));
-
-        sequence.addNumber(new Number(sequence.getSequence().get(1).getValue()
-                                    + sequence.getSequence().get(2).getValue()));
-
-        sequence.addNumber(new Number(sequence.getSequence().get(2).getValue()
-                                    + sequence.getSequence().get(3).getValue()));
+        builtSequence();
 
         return sequence;
+    }
+
+    private void builtSequence() {
+        addTwoFirstFibonacciNumbersToSequence();
+
+        addNextFibonacciNumbersToSequence();
+    }
+
+    private void addNextFibonacciNumbersToSequence() {
+        for(int n=1; n < limitBy; n++) {
+            sequence.addNumber(new Number(sequence.getSequence().get(n - 1).getValue()
+                                        + sequence.getSequence().get(n).getValue()));
+        }
+    }
+
+    private void addTwoFirstFibonacciNumbersToSequence() {
+        sequence.addNumber(new Number(1));
+        sequence.addNumber(new Number(2));
     }
 }
