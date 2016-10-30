@@ -1,8 +1,9 @@
 package evenfibonacci;
 
-import org.hamcrest.core.Is;
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 public class SumTest {
 
@@ -16,7 +17,7 @@ public class SumTest {
 
         Sum sum = new Sum(sequence);
 
-        Assert.assertThat(sum.getSumOfEvenNumbers(), Is.is(8));
+        assertThat(sum.getSumOfEvenNumbers(), is(8));
     }
 
 }
