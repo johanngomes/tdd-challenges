@@ -1,5 +1,7 @@
 package evenfibonacci;
 
+import evenfibonacci.exceptions.FibonacciSequenceLimitLessThanTwo;
+
 public class Fibonacci {
     private Sequence sequence;
     private int limitBy;
@@ -9,16 +11,24 @@ public class Fibonacci {
         this.limitBy = limitBy;
     }
 
-    public Sequence getLimitedSequenceOf5Numbers() {
+    public Sequence getLimitedSequence() throws FibonacciSequenceLimitLessThanTwo {
         builtSequence();
 
         return sequence;
     }
 
-    private void builtSequence() {
+    private void builtSequence() throws FibonacciSequenceLimitLessThanTwo {
+        checkValidLimit();
+
         addTwoFirstFibonacciNumbersToSequence();
 
         addNextFibonacciNumbersToSequence();
+    }
+
+    private void checkValidLimit() throws FibonacciSequenceLimitLessThanTwo {
+        if(limitBy < 2) {
+            throw new FibonacciSequenceLimitLessThanTwo();
+        }
     }
 
     private void addNextFibonacciNumbersToSequence() {
