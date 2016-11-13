@@ -1,5 +1,7 @@
 package reversible;
 
+import reversible.exceptions.NumberNotReversibleException;
+
 public class Number {
     private Integer number;
 
@@ -11,8 +13,16 @@ public class Number {
         return number;
     }
 
-    public void reverse() {
+    public void reverse() throws NumberNotReversibleException {
+        isReversible();
+
         StringBuffer reversedNumber = new StringBuffer(number.toString()).reverse();
         number = Integer.parseInt(reversedNumber.toString());
+    }
+
+    private void isReversible() throws NumberNotReversibleException {
+        if (number < 10) {
+            throw new NumberNotReversibleException();
+        }
     }
 }
