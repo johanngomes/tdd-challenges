@@ -42,4 +42,18 @@ public class NumberTest {
     public void shouldNotCreateANegativeNumber() throws NumberNegativeException {
         new Number(-1);
     }
+
+    @Test
+    public void shouldRecognizeAnOddNumber() throws NumberNegativeException {
+        Number number = new Number(5);
+
+        assertThat(number.isOdd(), is(true));
+    }
+
+    @Test
+    public void shouldRecognizeANonOddNumber() throws NumberNegativeException {
+        Number number = new Number(2);
+
+        assertThat(number.isOdd(), is(false));
+    }
 }

@@ -12,6 +12,13 @@ public class Number {
         this.number = number;
     }
 
+    public boolean isOdd() {
+        if (number % 2 != 0) {
+            return true;
+        }
+        return false;
+    }
+
     public Integer getNumber() {
         return number;
     }
