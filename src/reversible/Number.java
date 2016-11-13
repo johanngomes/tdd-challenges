@@ -1,11 +1,14 @@
 package reversible;
 
+import reversible.exceptions.NumberNegativeException;
 import reversible.exceptions.NumberNotReversibleException;
 
 public class Number {
     private Integer number;
 
-    public Number(Integer number) {
+    public Number(Integer number) throws NumberNegativeException {
+        isPositive(number);
+
         this.number = number;
     }
 
@@ -23,6 +26,12 @@ public class Number {
     private void isReversible() throws NumberNotReversibleException {
         if (number < 10) {
             throw new NumberNotReversibleException();
+        }
+    }
+
+    private void isPositive(int number) throws NumberNegativeException {
+        if (number < 0) {
+            throw new NumberNegativeException();
         }
     }
 }

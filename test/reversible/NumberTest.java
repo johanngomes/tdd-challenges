@@ -1,6 +1,7 @@
 package reversible;
 
 import org.junit.Test;
+import reversible.exceptions.NumberNegativeException;
 import reversible.exceptions.NumberNotReversibleException;
 
 import static org.hamcrest.core.Is.is;
@@ -8,13 +9,13 @@ import static org.junit.Assert.assertThat;
 
 public class NumberTest {
     @Test
-    public void shouldReturnANumber() {
+    public void shouldReturnANumber() throws NumberNegativeException {
         Number number = new Number(5);
         assertThat(number.getNumber(), is(5));
     }
 
     @Test
-    public void shouldReverseItself() throws NumberNotReversibleException {
+    public void shouldReverseItself() throws NumberNotReversibleException, NumberNegativeException {
         Number number = new Number(25);
         number.reverse();
 
@@ -22,7 +23,7 @@ public class NumberTest {
     }
 
     @Test
-    public void shouldDereverseItself() throws NumberNotReversibleException {
+    public void shouldDereverseItself() throws NumberNotReversibleException, NumberNegativeException {
         Number number = new Number(25);
         number.reverse();
         number.reverse();
@@ -31,9 +32,14 @@ public class NumberTest {
     }
 
     @Test(expected = NumberNotReversibleException.class)
-    public void shouldNotReverseANumberWithOneDigit() throws NumberNotReversibleException {
+    public void shouldNotReverseANumberWithOneDigit() throws NumberNotReversibleException, NumberNegativeException {
         Number number = new Number(2);
 
         number.reverse();
+    }
+
+    @Test(expected = NumberNegativeException.class)
+    public void shouldNotCreateANegativeNumber() throws NumberNegativeException {
+        new Number(-1);
     }
 }
