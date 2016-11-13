@@ -19,4 +19,13 @@ public class NumberTest {
 
         assertThat(number.getNumber(), is(52));
     }
+
+    @Test
+    public void shouldDereverseItself() {
+        Number number = new Number(25);
+        number.reverse();
+        number.reverse();
+
+        assertThat(number.getNumber(), is(25));
+    }
 }
