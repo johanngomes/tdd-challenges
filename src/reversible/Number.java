@@ -1,13 +1,18 @@
 package reversible;
 
 public class Number {
-    private int number;
+    private Integer number;
 
-    public Number(int number) {
+    public Number(Integer number) {
         this.number = number;
     }
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
+    }
+
+    public void reverse() {
+        StringBuffer reversedNumber = new StringBuffer(number.toString()).reverse();
+        number = Integer.parseInt(reversedNumber.toString());
     }
 }
