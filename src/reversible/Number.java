@@ -19,6 +19,27 @@ public class Number {
         return false;
     }
 
+    public boolean allDigitsAreOdd() {
+        int[] digits = getArrayOfDigits();
+
+        for(int digit = 0; digit < digits.length; digit++) {
+            if (digitIsEven(digits[digit])) return false;
+        }
+
+        return true;
+    }
+
+    private boolean digitIsEven(int digit) {
+        if (digit % 2 == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private int[] getArrayOfDigits() {
+        return Integer.toString(number).chars().map(c -> c-='0').toArray();
+    }
+
     public Integer getNumber() {
         return number;
     }

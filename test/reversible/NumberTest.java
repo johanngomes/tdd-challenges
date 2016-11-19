@@ -56,4 +56,18 @@ public class NumberTest {
 
         assertThat(number.isOdd(), is(false));
     }
+
+    @Test
+    public void shouldRecognizeThatAllDigitsAreOdd() throws NumberNegativeException {
+        Number number = new Number(1313);
+
+        assertThat(number.allDigitsAreOdd(), is(true));
+    }
+
+    @Test
+    public void shouldRecognizeThatNotAllDigitsAreOdd() throws NumberNegativeException {
+        Number number = new Number(1314);
+
+        assertThat(number.allDigitsAreOdd(), is(false));
+    }
 }
