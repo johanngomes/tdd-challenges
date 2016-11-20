@@ -11,6 +11,10 @@ public class XRemoverTest {
         XRemover firstString = new XRemover("xxHxix");
         firstString.removeXs();
 
+        XRemover secondString = new XRemover("abcd");
+        secondString.removeXs();
+
         Assert.assertThat(firstString.getString(), is("xHix"));
+        Assert.assertThat(secondString.getString(), is("abcd"));
     }
 }

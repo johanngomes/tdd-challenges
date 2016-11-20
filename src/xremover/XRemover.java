@@ -8,9 +8,11 @@ public class XRemover {
     }
 
     public void removeXs() {
-        this.string = this.string.charAt(0)
-                + this.string.replaceAll("x", "").replaceAll("X", "")
-                + this.string.charAt(this.string.length() - 1);
+        if (this.string.contains("x") || this.string.contains("X")) {
+            this.string = this.string.charAt(0)
+                    + this.string.replaceAll("x", "").replaceAll("X", "")
+                    + this.string.charAt(this.string.length() - 1);
+        }
     }
 
     public String getString() {
